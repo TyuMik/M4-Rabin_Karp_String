@@ -29,6 +29,9 @@ int find_substring_light_rabin_karp(std::string source, std::string substring) {
                 if (source[i + j] == substring[j]) {
                     c += 1;
                 }
+                else {
+                    break;
+                }
             }
         }
 
