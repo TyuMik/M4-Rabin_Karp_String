@@ -13,8 +13,8 @@ int find_substring_light_rabin_karp(std::string source, std::string substring) {
     for (int i = 0; i <= source.length() - substring.length(); i++) {
 
         if (i == 0) {
-            for (int i = 0; i < substring.length(); i++) {
-                hash += static_cast<int>(source[i]);
+            for (int k = 0; k < substring.length(); k++) {
+                hash += static_cast<int>(source[k]);
             }
         }
         else {
@@ -22,14 +22,20 @@ int find_substring_light_rabin_karp(std::string source, std::string substring) {
             hash += static_cast<int>(source[i + substring.length() - 1]);
         }
 
+        int c = 0;
+
         if (hash == sub_hash) {
             for (int j = 0; j < substring.length(); j++) {
-                if (source[i + j] != substring[j]) {
-                    break;
+                if (source[i + j] == substring[j]) {
+                    c += 1;
                 }
             }
+        }
+
+        if (c == substring.length()) {
             return i;
         }
+
     }
 
     return -1;
