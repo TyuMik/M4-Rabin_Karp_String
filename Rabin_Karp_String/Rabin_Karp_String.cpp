@@ -6,6 +6,11 @@ int find_substring_light_rabin_karp(std::string source, std::string substring) {
     int sub_hash, hash;
     sub_hash = hash = 0;
 
+    if (source.length() < substring.length()) {
+        std::cout << "Ошибка! Размер подстроки больше строки!" << std::endl;
+        return -1;
+    }
+
     for (int i = 0; i < substring.length(); i++) {
         sub_hash += static_cast<int>(substring[i]);
     }
